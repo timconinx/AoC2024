@@ -33,21 +33,12 @@ fun part2(input: List<String>) {
 	val similarityright: MutableMap<String, Int?> = mutableMapOf()
 	input.forEach() {
 		val items = it.split("\\s+".toRegex())
-		if (items[0] in similarityleft.keys) {
-			similarityleft[items[0]] = similarityleft[items[0]]!! + 1
-		} else {			
-			similarityleft[items[0]] = 1
-		}
-		if (items[1] in similarityright.keys) {
-			similarityright[items[1]] = similarityright[items[1]]!! + 1
-		} else {			
-			similarityright[items[1]] = 1
-		}
+		similarityleft[items[0]] = if (items[0] in similarityleft.keys) similarityleft[items[0]]!! + 1 else 1
+		similarityright[items[1]] = if (items[1] in similarityright.keys) similarityright[items[1]]!! + 1 else 1
 	}
 	var score = 0
 	similarityleft.keys.forEach() {
-		val simright = similarityright[it] ?: 0
-		score += it.toInt() * similarityleft[it]!! * simright
+		score += it.toInt() * similarityleft[it]!! * (similarityright[it] ?: 0)
 	}
 	println(score)
 }
