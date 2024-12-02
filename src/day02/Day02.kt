@@ -66,7 +66,7 @@ fun checkForSafe(items: List<String>, dampened: Boolean): Boolean {
 				return false
 			} else {
 				if (i > 0) {
-				// try with removing previous value
+				    	// try with removing previous value
 					val withoutprevious = items.toMutableList()
 					withoutprevious.removeAt(i-1)
 					if (checkForSafe(withoutprevious, true)) return true
