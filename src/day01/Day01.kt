@@ -5,6 +5,8 @@ import kotlin.math.abs
 import kotlin.collections.listOf
 import kotlin.collections.mutableMapOf
 
+import util.*
+
 fun main() {
 	val input = readInput("day01")
 	part1(input)
