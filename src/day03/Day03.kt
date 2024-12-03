@@ -27,15 +27,20 @@ fun part1(input: List<String>) {
 fun part2(input: List<String>) {
 	val results = Regex("(mul\\(\\d+,\\d+\\))|(do\\(\\))|(don\\'t\\(\\))").findAll(input[0])
 	var sum = 0
+	var enabled = true
 	results.forEach() {
-		println(it.value)
-		/*val factors = Regex("\\d+").findAll(it.value)
-		var prod = 1
-		factors.forEach() {
-			prod *= it.value.toInt()
+		if (Regex("do\\(\\)").containsMatchIn(it.value)) {
+			enabled = true
+		} else if (Regex("don\\'t\\(\\)").containsMatchIn(it.value)) {
+			enabled = false
+		} else if (enabled){
+			val factors = Regex("\\d+").findAll(it.value)
+			var prod = 1
+			factors.forEach() {
+				prod *= it.value.toInt()
+			}
+			sum += prod
 		}
-		sum += prod
 	}
-	println(sum)*/
-}
+	println(sum)
 }
