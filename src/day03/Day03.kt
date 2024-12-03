@@ -11,16 +11,7 @@ fun main() {
 
 fun part1(input: List<String>) {
 	val results = Regex("mul\\(\\d+,\\d+\\)").findAll(input[0])
-	var sum = 0
-	results.forEach() {
-		//println(it.value)
-		val factors = Regex("\\d+").findAll(it.value)
-		var prod = 1
-		factors.forEach() {
-			prod *= it.value.toInt()
-		}
-		sum += prod
-	}
+	val sum = results.map { r -> Regex("\\d+").findAll(r.value).map { v -> v.value.toInt() }.fold(1) { acc, p -> acc * p } }.fold(0) { acc, s -> acc + s }
 	println(sum)
 }
 
@@ -34,12 +25,7 @@ fun part2(input: List<String>) {
 		} else if (Regex("don\\'t\\(\\)").containsMatchIn(it.value)) {
 			enabled = false
 		} else if (enabled){
-			val factors = Regex("\\d+").findAll(it.value)
-			var prod = 1
-			factors.forEach() {
-				prod *= it.value.toInt()
-			}
-			sum += prod
+			sum += Regex("\\d+").findAll(it.value).map { v -> v.value.toInt() }.fold(1) { acc, p -> acc * p }
 		}
 	}
 	println(sum)
