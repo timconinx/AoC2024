@@ -10,9 +10,7 @@ fun main() {
 }
 
 fun part1(input: List<String>) {
-	val results = Regex("mul\\(\\d+,\\d+\\)").findAll(input[0])
-	val sum = results.map { r -> Regex("\\d+").findAll(r.value).map { v -> v.value.toInt() }.fold(1) { acc, p -> acc * p } }.fold(0) { acc, s -> acc + s }
-	println(sum)
+	println( Regex("mul\\(\\d+,\\d+\\)").findAll(input[0]).map { r -> Regex("\\d+").findAll(r.value).map { v -> v.value.toInt() }.fold(1) { acc, p -> acc * p } }.fold(0) { acc, s -> acc + s } )
 }
 
 fun part2(input: List<String>) {
