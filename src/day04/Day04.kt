@@ -13,7 +13,7 @@ fun main() {
 
 fun part1(input: List<String>) {
 	val directions: List<Coordinate.() -> Coordinate> = listOf(Coordinate::N, Coordinate::NE, Coordinate::E, Coordinate::SE,
-																Coordinate::S, Coordinate::SW, Coordinate::W, Coordinate::NW)
+                                                               Coordinate::S, Coordinate::SW, Coordinate::W, Coordinate::NW)
 	val grid: MutableMap<Coordinate, String> = mutableMapOf()
 	for (i in 0..input.count() -1) {
 		val line = input[i].split("")
@@ -37,7 +37,7 @@ fun part1(input: List<String>) {
 fun part2(input: List<String>) {
 	// possible directions of a star-"A"
 	val directions: List<Coordinate.() -> Coordinate> = listOf(Coordinate::NE, Coordinate::SE,
-																Coordinate::SW, Coordinate::NW)
+                                                               Coordinate::SW, Coordinate::NW)
 	// map of "A" to other "M", other "S"
 	val crossmap: Map<Coordinate.() -> Coordinate, List<Coordinate.() -> Coordinate>> = mapOf(
 		Coordinate::NE to listOf(Coordinate::NW, Coordinate::SE),
