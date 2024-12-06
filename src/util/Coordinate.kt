@@ -25,4 +25,7 @@ data class Coordinate(val x: Int, val y: Int) {
 	fun NW(): Coordinate {
 		return Coordinate(this.x-1, this.y-1)
 	}
+	fun inBounds(maxx: Int, maxy: Int): Boolean {
+		return (x > -1) && (x < maxx) && (y > -1) && (y < maxy)
+	}
 }
