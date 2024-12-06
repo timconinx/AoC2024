@@ -59,10 +59,11 @@ fun part2(input: List<String>) {
 			currentdir = directions[currentdiridx]
 		}
 		c = c.currentdir()
-		allpositions.add(c)
+		if (c.inBounds(input[0].count(), input.count())) {
+		    allpositions.add(c)
+		}
 	}
 	allpositions.remove(start)
-	println(allpositions.count())
 	// try all positions
 	var allfound = 0
 	for (b in allpositions) {
