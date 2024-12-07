@@ -3,7 +3,7 @@ package day07
 class EqSolver(val target: Long) {
 	val plus: (Long, Long) -> Long = { a, b -> a+b }
 	val times: (Long, Long) -> Long = { a, b -> a*b }
-	val concat: (Long, Long) -> Long = { a, b -> a*(10*(b/10)) + b }
+	val concat: (Long, Long) -> Long = { a, b -> "$a$b".toLong() }
 	
 	fun SolveFor(i: Long, next: MutableList<Long>): Boolean {
 		if (next.isEmpty()) {
@@ -36,9 +36,5 @@ class EqSolver(val target: Long) {
 		if (times(i, first) > target) return SolveForConcat(concat(i, first), newNext) || SolveForConcat(plus(i, first), newNext)
 		if (plus(i, first) > target) return SolveForConcat(concat(i, first), newNext) || SolveForConcat(times(i, first), newNext)
 		return SolveForConcat(concat(i, first), newNext) || SolveForConcat(times(i, first), newNext) || SolveForConcat(plus(i, first), newNext)
-	}
-	
-	fun Test(a: Long, b: Long): Long {
-		return 
 	}
 }
